@@ -1,8 +1,8 @@
 const RateSchema = require('../model/ratingsSchema')
 const Insert=async(req,res)=>{
     try{
-        const {ratings,reviews,date,status}=req.body;
-        const data = await new RateSchema({ratings,reviews,date,status})
+        const {ratings,reviews,recID,date,status}=req.body;
+        const data = await new RateSchema({recipe_id:recID,user_id:req.user,ratings,reviews,date,status})
         const savedData =await data.save()
         console.log("insertion success");
         res.send({"insertion successful":true,savedData})
@@ -15,7 +15,19 @@ const Insert=async(req,res)=>{
 
 const View = async(req,res)=>{
     try{
-        const data= await RateSchema.find()
+        const data= await RateSchema.find({user_id:req.user}).populate(["recipe_id","user_id"])
+        console.log(data);
+        res.json(data)
+    }
+    catch(error){
+        console.error("some error occured!!"+error)
+        res.status(500).json("some internal error!!!")
+    }
+}
+
+const ViewAll = async(req,res)=>{
+    try{
+        const data= await RateSchema.find().populate(["recipe_id","user_id"])
         console.log(data);
         res.json(data)
     }
@@ -87,4 +99,4 @@ const Update=async(req,res)=>{
     }
 }
 
-module.exports={Insert,View,SingleView,Delete,Update}
+module.exports={Insert,View,ViewAll,SingleView,Delete,Update}

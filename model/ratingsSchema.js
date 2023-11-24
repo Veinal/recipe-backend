@@ -5,6 +5,10 @@ const RateSchema= new Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"userDetails"
     },
+    recipe_id:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"recipes"
+    },
     ratings:{
         type:Number,
         min:1,

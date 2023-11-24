@@ -34,7 +34,8 @@ const RecipSchema = new Schema({
         default:Date.now
     },
     status:{
-        type:String
+        type:String,
+        default:'available'
     }
 })
 module.exports=mongoose.model("recipes",RecipSchema)
