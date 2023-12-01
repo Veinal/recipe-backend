@@ -70,7 +70,7 @@ const Update=async(req,res)=>{
    
     const {recipeName,ingredients,description,instructions,video,date,status,category_id}=req.body;
     const image=req?.file?.filename
-    console.log(image,'uuuuuuuuuuuuuuuuuuuuuuuuuuu')
+    // console.log(image,'uuuuuuuuuuuuuuuuuuuuuuuuuuu')
     try{
         const newData = {}
         if(recipeName){newData.recipeName=recipeName}

@@ -97,7 +97,8 @@ const Delete = async(req,res)=>{
 }
 
 const Update=async(req,res)=>{
-    const {userName,email,password,phone,picture,date,status}=req.body;
+    const {userName,email,password,phone,date,status}=req.body;
+    const picture=req?.file?.filename
     try{
         const newData = {}
         if(userName){newData.userName=userName}
