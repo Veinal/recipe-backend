@@ -66,7 +66,7 @@ const Delete = async(req,res)=>{
 }
 
 const Update=async(req,res)=>{
-    console.log(req?.file?.filename)
+    // console.log(req?.file?.filename)
    
     const {recipeName,ingredients,description,instructions,video,date,status,category_id}=req.body;
     const image=req?.file?.filename

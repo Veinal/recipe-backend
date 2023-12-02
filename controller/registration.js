@@ -99,6 +99,8 @@ const Delete = async(req,res)=>{
 const Update=async(req,res)=>{
     const {userName,email,password,phone,date,status}=req.body;
     const picture=req?.file?.filename
+
+    console.log(req.body,90);
     try{
         const newData = {}
         if(userName){newData.userName=userName}
